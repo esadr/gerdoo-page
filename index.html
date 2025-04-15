@@ -15,15 +15,18 @@
     const GA_MEASUREMENT_ID = "G-K7Y6E93YQ4"; // <-- Your ID goes here
 
     function loadGoogleAnalytics() {
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      const gtagScript = document.createElement('script');
+      gtagScript.setAttribute('async', '');
+      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-K7Y6E93YQ4';
+      document.head.appendChild(gtagScript);
 
-      ga('create', GA_MEASUREMENT_ID, { 'storage': 'none' });  // no cookies if you want minimal usage
-      ga('set', 'anonymizeIp', true);
-      ga('send', 'pageview');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-K7Y6E93YQ4', { 'anonymize_ip': true });
     }
+
 
     // Minimal consent check
     if (!localStorage.getItem('ga_opt_out')) {
