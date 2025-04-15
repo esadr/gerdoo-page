@@ -2,60 +2,166 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gerdoo — Building Tech for People Who Need It Most</title>
-  <link rel="icon" type="image/png" href="logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gerdoo — Tools that Empower</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+  <!-- [GA4 SCRIPT + COOKIE CONSENT START] -->
+  <script>
+    // We'll store the user's preference in localStorage for simplicity.
+    // If user has not opted out, load GA script.
+
+    // Your actual GA4 Measurement ID.
+    const GA_MEASUREMENT_ID = "G-K7Y6E93YQ4"; // <-- Your ID goes here
+
+    function loadGoogleAnalytics() {
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', GA_MEASUREMENT_ID, { 'storage': 'none' });  // no cookies if you want minimal usage
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    }
+
+    // Minimal consent check
+    if (!localStorage.getItem('ga_opt_out')) {
+      // If user not opted out, load analytics
+      loadGoogleAnalytics();
+    }
+
+    function acceptAnalytics() {
+      localStorage.removeItem('ga_opt_out');
+      loadGoogleAnalytics();
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+
+    function declineAnalytics() {
+      localStorage.setItem('ga_opt_out', 'true');
+      // We won't load GA next time, user must refresh to fully remove GA
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+  </script>
+  <style>
+    /* Very basic banner styling */
+    #cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #222;
+      color: #fff;
+      padding: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 9999;
+      font-size: 0.9rem;
+    }
+    #cookie-banner button {
+      background: #444;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-left: 0.5rem;
+      cursor: pointer;
+    }
+  </style>
+  <!-- [GA4 SCRIPT + COOKIE CONSENT END] -->
+
   <style>
     body {
-      font-family: system-ui, sans-serif;
-      background: #fdfdfd;
-      color: #222;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+      font-family: sans-serif;
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+      background-color: #f9f9f9;
+      color: #333;
       text-align: center;
     }
-    main {
-      padding: 2rem;
-      max-width: 600px;
+    header {
+      margin-bottom: 2rem;
     }
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      color: #2b2b2b;
+      margin-top: 1rem;
     }
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
+    .logo {
+      width: 100px;
+      height: auto;
+      margin: 0 auto;
     }
     footer {
-      margin-top: 2rem;
+      margin-top: 3rem;
       font-size: 0.9rem;
-      color: #888;
+      color: #777;
+    }
+    .button-link {
+      margin-top: 2rem;
+      display: inline-block;
+      padding: 0.7rem 1.5rem;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .button-link:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
-  <main>
+  <header>
+    <img src="logo.png" alt="Gerdoo Logo" class="logo" />
     <h1>Gerdoo</h1>
+    <p>At Gerdoo, our mission is to create simple, effective tools that protect and empower vulnerable communities.</p>
+    <p>We build open, human-centered technology — especially in AI — to help people navigate the digital world safely and with dignity.</p>
+    <p>Whether it's preventing scams, improving access, or reducing harm, we believe tech should serve those who need it most.</p>
+  </header>
+
+  <a class="button-link" href="https://scanintel.gerdoo.org" target="_blank" rel="noopener">
+    Visit ScanIntel →
+  </a>
+
+  <!-- Example Support/Donate link (if you want it here) -->
+  <p style="margin-top: 2rem;">
+    🙌 Want to support this project?<br />
+    <a href="https://ko-fi.com/gerdoo" target="_blank" rel="noopener" style="color: #007BFF;">Buy me a coffee →</a>
+  </p>
+
+  <footer>
+    <p>© 2025 Gerdoo. All rights reserved.</p>
     <p>
-      At Gerdoo, our mission is to create simple, effective tools that protect and empower vulnerable communities.<br/><br/>
-      We build open, human-centered technology — especially in AI — to help people navigate the digital world safely and with dignity.<br/><br/>
-      Whether it's preventing scams, improving access, or reducing harm, we believe tech should serve those who need it most.
+      We use limited analytics to understand interest in our ideas. 
+      <br />
+      <a href="#" onclick="document.getElementById('cookie-banner').style.display='block'; return false;">
+        Manage cookie preferences
+      </a>
     </p>
+  </footer>
 
+  <!-- [COOKIE BANNER] -->
+  <div id="cookie-banner" style="display: none;">
+    <span>
+      We use Google Analytics to see how people use this site. No personal info is stored.
+      <br />
+      <strong>Allow analytics?</strong>
+    </span>
+    <span>
+      <button onclick="acceptAnalytics()">Yes</button>
+      <button onclick="declineAnalytics()">No</button>
+    </span>
+  </div>
 
-  <section class="project-link">
-    <h2>🚨 Featured Project: <a href="https://scanintel.gerdoo.org" target="_blank">ScanIntel</a></h2>
-    <p>ScanIntel helps people detect scammy or dangerous QR codes before they fall victim. Learn more and share your thoughts.</p>
-  </section>
-
-    <footer>
-      &copy; 2025 Gerdoo. All rights reserved.
-    </footer>
-  </main>
+  <script>
+    // Show the banner if user hasn't decided yet
+    if (!localStorage.getItem('ga_opt_out')) {
+      // The user is neither fully accepted nor explicitly declined
+      // Alternatively, you can check if analytics loaded and skip the banner if it did.
+      document.getElementById('cookie-banner').style.display = 'flex';
+    }
+  </script>
 </body>
 </html>
